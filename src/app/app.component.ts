@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import * as JsBarcode from 'jsbarcode';
 
 @Component({
@@ -8,7 +8,7 @@ import * as JsBarcode from 'jsbarcode';
 })
 export class AppComponent {
 
-  public barcodeNumber:string = "";
+  public barcodeNumber:string = "0";
 
   public Width: number = 1.5;
 
@@ -23,10 +23,20 @@ export class AppComponent {
 
   public fileDirectory:string = "";
 
+  @ViewChild('barcodeRef')barcodeRef!:ElementRef;
+  @ViewChild('btnRef')btnRef!:ElementRef;
+
   ngOnInit(){
 
   }
 
+  ngAfterViewInit(){
+    this.barcodeRef.nativeElement.focus();
+  }
+
+  moveCusrsorToGenerateButton(){
+  this.btnRef.nativeElement.focus();
+  }
   generateBarcode(){
     JsBarcode("#barcode", this.barcodeNumber, {
       width: this.Width,
@@ -56,4 +66,5 @@ export class AppComponent {
   //   }
   //   image.src = filename
   // }
+
 }

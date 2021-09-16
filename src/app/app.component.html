@@ -1,17 +1,19 @@
-<div>
-  <h3>--------------Generate Barcode Here----------</h3>
+<div style="text-align: center;">
+  <h3>--------------<b>Generate Barcode Here</b>--------------</h3>
 </div>
+<div style="text-align: center;">
 <div>
-  <label for="barcodeNumber">Barcode Number goes here:</label>
-  <input type="text" name="barcodeNumber" id="barcodeNumber" [(ngModel)]="barcodeNumber "/>
+  <label for="barcodeNumber"><b>Barcode Number goes here:</b></label><br>
+  <input type="text" #barcodeRef name="barcodeNumber" id="barcodeNumber" [(ngModel)]="barcodeNumber " onClick="this.select();" (keyup.enter)="moveCusrsorToGenerateButton()" style="padding: 5px;"/>
 </div>
-<div>
-  <button type="submit" (click)="generateBarcode()">Generate Bar Code</button>
+<div><br>
+  <button type="submit" #btnRef (click)="generateBarcode()" style="background-color:rgb(9, 121, 250); padding: 5px; color: snow;">Generate Bar Code</button>
 </div>
 <div>
   <svg id = "barcode"></svg>
 </div>
 <div>
   <svg id = "qrcode"></svg>
+</div>
 </div>
 <router-outlet></router-outlet>
