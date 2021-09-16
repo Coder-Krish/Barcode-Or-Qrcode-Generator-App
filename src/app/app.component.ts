@@ -19,7 +19,9 @@ export class AppComponent {
 
   public textMargin: number = 1;//this is not pixel, could be Percent.. (need to check.)
 
-  barcodeMargin: number = 10;
+  public barcodeMargin: number = 10;
+
+  public fileDirectory:string = "";
 
   ngOnInit(){
 
@@ -35,4 +37,23 @@ export class AppComponent {
   });
   }
 
+  // generateQrCode(){
+  //   var Canvas = require('canvas')
+  //     , Image = Canvas.Image
+  //     , qrcode = require('jsqrcode')(Canvas)
+ 
+  //   var filename = this.fileDirectory + '/qrcode.png'
+ 
+  //   var image = new Image()
+  //   image.onload = function(){
+  //     var result;
+  //     try{
+  //       result = qrcode.decode(image);
+  //       console.log('result of qr code: ' + result);
+  //     }catch(e){
+  //       console.log('unable to read qr code');
+  //     }
+  //   }
+  //   image.src = filename
+  // }
 }

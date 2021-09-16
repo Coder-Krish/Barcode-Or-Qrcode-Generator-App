@@ -1,4 +1,7 @@
 <div>
+  <h3>--------------Generate Barcode Here----------</h3>
+</div>
+<div>
   <label for="barcodeNumber">Barcode Number goes here:</label>
   <input type="text" name="barcodeNumber" id="barcodeNumber" [(ngModel)]="barcodeNumber "/>
 </div>
@@ -7,5 +10,8 @@
 </div>
 <div>
   <svg id = "barcode"></svg>
+</div>
+<div>
+  <svg id = "qrcode"></svg>
 </div>
 <router-outlet></router-outlet>
