@@ -8,7 +8,7 @@ import * as JsBarcode from 'jsbarcode';
 })
 export class AppComponent {
 
-  public barcodeNumber:string = "0";
+  public dataToConvert:string = "0";
 
   public Width: number = 1.5;
 
@@ -21,24 +21,27 @@ export class AppComponent {
 
   public barcodeMargin: number = 10;
 
-  public fileDirectory:string = "";
+  public dataToConvertIntoQR:string = "bogatikrishna.com.np";
 
-  @ViewChild('barcodeRef')barcodeRef!:ElementRef;
-  @ViewChild('btnRef')btnRef!:ElementRef;
+  public displayQrCode:boolean = false;
+  public displayBarCode:boolean = false;
+
+
+
+  @ViewChild('dataToconvertToRef')dataToconvertToRef!:ElementRef;
 
   ngOnInit(){
 
   }
 
   ngAfterViewInit(){
-    this.barcodeRef.nativeElement.focus();
+    this.dataToconvertToRef.nativeElement.focus();
   }
 
-  moveCusrsorToGenerateButton(){
-  this.btnRef.nativeElement.focus();
-  }
   generateBarcode(){
-    JsBarcode("#barcode", this.barcodeNumber, {
+    this.displayQrCode = false;
+    this.displayBarCode = true;
+    JsBarcode("#barcode", this.dataToConvert, {
       width: this.Width,
       height: this.Height,
       fontSize: this.fontSize,
@@ -47,24 +50,9 @@ export class AppComponent {
   });
   }
 
-  // generateQrCode(){
-  //   var Canvas = require('canvas')
-  //     , Image = Canvas.Image
-  //     , qrcode = require('jsqrcode')(Canvas)
- 
-  //   var filename = this.fileDirectory + '/qrcode.png'
- 
-  //   var image = new Image()
-  //   image.onload = function(){
-  //     var result;
-  //     try{
-  //       result = qrcode.decode(image);
-  //       console.log('result of qr code: ' + result);
-  //     }catch(e){
-  //       console.log('unable to read qr code');
-  //     }
-  //   }
-  //   image.src = filename
-  // }
-
+  generateQrCode(){
+    this.displayBarCode = false;
+    this.displayQrCode = true;
+    this.dataToConvertIntoQR = this.dataToConvert;
+  }
 }
