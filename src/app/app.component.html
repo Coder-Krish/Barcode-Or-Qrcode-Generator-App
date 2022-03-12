@@ -1,20 +1,44 @@
-<div style="text-align: center;">
+<div class="col-md-12">
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="../assets/images/site-icon.jpg" alt="" width="40px" class="d-inline-block align-text-center">
+        <span><b> Krishna Bogati (Engineer | Techno Geek | Quick Learner) </b></span>
+      </a>
+
+      <a href="https://www.linkedin.com/in/krishna-bogati/">
+        <img src="../assets/images/linkedin-logo.png" alt="" style="width: 24px;">
+      </a>
+
+    </div>
+  </nav>
+</div>
+<div class="col-md-12" style="text-align: center;">
   <h3>--------------<b>Generate Barcode Or Qrcode Here</b>--------------</h3>
 </div>
-<div style="text-align: center;">
-<div>
-  <label for="barcodeNumber"><b>Data You Want To Convert:</b></label><br>
-  <input type="text" #dataToconvertToRef name="dataToConvert" id="barcodeNumber" [(ngModel)]="dataToConvert " onClick="this.select();"  style="padding: 5px;"/>
-</div>
-<div><br>
-  <button type="submit" (click)="generateBarcode()" style="background-color:rgb(9, 121, 250); padding: 5px; color: snow;">Generate Bar Code</button>
-  &nbsp;&nbsp;<button type="submit" (click)="generateQrCode()" style="background-color:rgba(243, 45, 39, 0.562); padding: 5px; color: snow;">Generate QR Code</button>
-</div><br>
-<div [hidden] = "!displayBarCode">
-  <svg id = "barcode"></svg>
-</div>
-<div *ngIf = "displayQrCode">
-  <qr-code [value]="dataToConvertIntoQR"></qr-code>
-</div>
+<div class="col-md-12" style="text-align: center;">
+  <div>
+    <label for="barcodeNumber"><b>Data You Want To Convert:</b></label><br>
+    <!-- <input type="text" #dataToconvertToRef name="dataToConvert" id="barcodeNumber" [(ngModel)]="dataToConvert"
+      onClick="this.select();" style="padding: 5px; height: 20%; width: 40%;" /> -->
+    <textarea name="dataToConvert" id="barcodeNumber" cols="60" rows="10" [(ngModel)]="dataToConvert"
+      onClick="this.select();" placeholder="Your content goes here...">
+      </textarea>
+  </div>
+  <div><br>
+    <button type="submit" class="btn btn-primary" (click)="generateBarcode()"
+      style="padding: 5px; color: snow;">Generate Bar Code</button>
+    &nbsp;&nbsp;<button type="submit" class="btn btn-danger" (click)="generateQrCode()"
+      style="padding: 5px; color: snow;">Generate QR Code</button>
+  </div><br>
+  <div [hidden]="!displayBarCode">
+    <svg id="barcode"></svg>
+  </div>
+  <div *ngIf="displayQrCode">
+    <qr-code [value]="dataToConvertIntoQR" [size]="200"></qr-code>
+  </div>
+  <div class="alert alert-danger" role="alert" *ngIf="showError">
+    <span>Please provide some data to be converted...</span>
+  </div>
 </div>
 <router-outlet></router-outlet>
